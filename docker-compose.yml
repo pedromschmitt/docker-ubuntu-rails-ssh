@@ -2,7 +2,7 @@ version: "3"
 
 services:
   postgres:
-    image: "postgres:9.5"
+    image: "postgres:11.1"
     volumes:
       - postgres:/var/lib/postgresql/data
 
@@ -11,7 +11,7 @@ services:
     volumes:
       - .:/projects
     ports:
-      - "3001:3000"
+      - "3000:3000"
       - "22"
     depends_on:
       - postgres
@@ -19,14 +19,14 @@ services:
   mailcatcher:
     image: tophfr/mailcatcher
     ports:
-      - "1026:25"
-      - "1081:80"
+      - "1025:25"
+      - "1080:80"
   
   redis:
     image: 'redis:5.0.3'
     command: redis-server
     ports:
-      - '6380:6379'
+      - '6379:6379'
     volumes:
       - redis:/var/lib/redis/data
 
